@@ -1,39 +1,26 @@
-canvas = document.getElementById("myCanvas");
-ctx=canvas.getContext("2d");
+menu_list_array = ["Chicken Tandoori Pizza","Veg Supreme Pizza","Paneer Tikka Pizza","Deluxe Veggie Pizza","Veg Extravaganza Pizza"];
+    
+function getmenu(){
+    var htmldata;
+    htmldata="<ol class='menulist'>"
+    menu_list_array.sort();
+    for(var i=0;i<menu_list_array.length;i++){
+        htmldata=htmldata+'<li>' + menu_list_array[i] + '</li>'
+    }
+     htmldata=htmldata+"</ol>"
+     document.getElementById("display_menu").innerHTML = htmldata;
+}
 
- 
-ctx.beginPath();
-ctx.strokeStyle = "grey";
-ctx.lineWidth=4;
-ctx.rect(150,143,430,200);
-ctx.stroke();
+function add_item(){
+    var htmldata;
+    var item=document.getElementById("add_item").value;
+    menu_list_array.push(item);
+    menu_list_array.sort();
+    htmldata="<section class='cards'>"
+    for(var i=0;i<menu_list_array.length;i++){
 
-ctx.beginPath();
-ctx.strokeStyle = "blue";
-ctx.lineWidth=5;
-ctx.arc(250,210,40,0,2 * Math.PI);
-ctx.stroke();
-
-ctx.beginPath();
-ctx.strokeStyle = "black";
-ctx.lineWidth=5;
-ctx.arc(350,210,40,0,2 * Math.PI);
-ctx.stroke();
-
-ctx.beginPath();
-ctx.strokeStyle = "red";
-ctx.lineWidth=5;
-ctx.arc(450,210,40,0,2 * Math.PI);
-ctx.stroke();
-
-ctx.beginPath();
-ctx.strokeStyle = "yellow";
-ctx.lineWidth=5;
-ctx.arc(300,250,40,0,2 * Math.PI);
-ctx.stroke();
-
-ctx.beginPath();
-ctx.strokeStyle = "green";
-ctx.lineWidth=5;
-ctx.arc(400,250,40,0,2 * Math.PI);
-ctx.stroke();
+        htmldata=htmldata+'<div class="card">' +'<img src="images/pizzaImg.png"/>' + menu_list_array[i] + '</div>'
+    }
+      htmldata=htmldata+"</section>"
+      document.getElementById("display_addedmenu").innerHTML = htmldata;
+}
